@@ -74,8 +74,8 @@ func (s *LocalStorage) Delete(_ context.Context, token string, filename string) 
 	metadata := filepath.Join(s.basedir, token, fmt.Sprintf("%s.metadata", filename))
 	_ = os.Remove(metadata)
 
-	path := filepath.Join(s.basedir, token, filename)
-	err = os.Remove(path)
+	path := filepath.Join(s.basedir, token)
+	err = os.RemoveAll(path)
 	return
 }
 
